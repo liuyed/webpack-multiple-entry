@@ -17,9 +17,14 @@ var configPlugins = [
         name: 'lib'
     }),
     new ExtractTextPlugin({
-        filename: 'css/common.css?[contenthash:8]',
+        filename: 'css/common.css?v=[contenthash:8]',
         allChunks: true
     }),
+    new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        layer: 'layer'
+    })
 
 ];
 
@@ -125,7 +130,7 @@ module.exports = {
                 options: {
                     // path: path.resolve(__dirname, 'dist/img/'),
 
-                    name: 'img/[name].[ext]?[hash:8]',
+                    name: 'img/[name].[ext]?v=[hash:8]',
                     limit: 70
                 }
             }
@@ -157,8 +162,8 @@ module.exports = {
     },
 
     output: {
-        filename: 'js/[name].js?[chunkhash:8]',
-        chunkFilename: 'js/[name].js?[chunkhash:8]',
+        filename: 'js/[name].js?v=[chunkhash:8]',
+        chunkFilename: 'js/[name].js?v=[chunkhash:8]',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/dist/'
             //path:path.resolve(__dirname, 'dist')
@@ -166,7 +171,9 @@ module.exports = {
     resolve: {
         extensions: ['*', '.js', '.json'],
         alias: {
-            bg: path.resolve(__dirname, 'src/img/bg.jpg')
+            bg: path.resolve(__dirname, 'src/img/bg.jpg'),
+            jquery: path.resolve(__dirname, 'src/lib/jquery/jquery-1.12.4.min.js'),
+            layer: path.resolve(__dirname, 'src/lib/layer/app.js')
         }
     }
 }

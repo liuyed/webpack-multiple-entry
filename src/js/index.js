@@ -2,11 +2,15 @@ var bg = require('bg');
 
 import '../css/app.scss';
 console.log(bg);
+//var $ = require('jquery');
 
+console.log($('#bg'));
 
 console.log('home Pages')
 
 console.log('222');
+
+console.log(layer);
 
 function getBrowserInfo() {
     var agent = navigator.userAgent.toLowerCase();
@@ -58,5 +62,12 @@ console.log(fn(3));
 console.log(fn(4));
 console.log(fn(5));
 console.log(fn(6));
+
+layer.msg('1111');
+
+setTimeout(function() {
+    layer.confirm('这是comfirm');
+
+}, 2000)
 
 //document.getElementById('bg').attributes('src', bg);

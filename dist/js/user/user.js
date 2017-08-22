@@ -7,7 +7,7 @@ webpackJsonp([1],{
 
 /***/ }),
 
-/***/ 6:
+/***/ 10:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19,4 +19,4 @@ console.log('user page');
 
 /***/ })
 
-},[6]);
+},[10]);
