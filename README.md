@@ -1,14 +1,13 @@
 
-===
-webpack 多入口
-===
+#### Webpack 多页面配置demo ####
 
-======
-npm i 
-======
 
-======
-npm run start/watch
-======
+1、npm i
+
+2、npm watch
+
+
+
+
 
 
