@@ -5,6 +5,8 @@ var path = require('path'),
 
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
 
+    CleanWebpackPlugin = require('clean-webpack-plugin'),
+
     IsDev = true,
     postCssConfig = require('./postcss.config.js'),
 
@@ -13,6 +15,13 @@ var path = require('path'),
 
 
 var configPlugins = [
+    // new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(['dist/'], {
+        "root": __dirname, // An absolute path for the root. 
+        "verbose": true, // Write logs to console. 
+        "watch": false // If true, remove files on recompile. (Default: false) 
+
+    }),
     new webpack.optimize.CommonsChunkPlugin({
         name: 'lib'
     }),
@@ -24,7 +33,7 @@ var configPlugins = [
         $: 'jquery',
         jQuery: 'jquery',
         layer: 'layer'
-    })
+    }),
 
 ];
 
@@ -90,7 +99,7 @@ function getEntryHtml(globpath) {
         });
     })
 
-    console.log(entries);
+    // console.log(entries);
     return entries;
 
 
@@ -105,10 +114,12 @@ entryHtml.forEach(function(v) {
 module.exports = {
     entry: entryJs,
 
-    //devtool: 'inline-source-map',
+    devtool: 'inline-source-map',
 
     devServer: {
-        contentBase: path.join(__dirname, 'dist/views/')
+        contentBase: path.join(__dirname, 'dist/'),
+        //inline: true, //启动inline
+        //hot: true
     },
     plugins: configPlugins,
     module: {
@@ -130,7 +141,7 @@ module.exports = {
                 options: {
                     // path: path.resolve(__dirname, 'dist/img/'),
 
-                    name: 'img/[name].[ext]?v=[hash:8]',
+                    name: 'img/[name].[hash:8].[ext]',
                     limit: 70
                 }
             }
@@ -172,7 +183,7 @@ module.exports = {
         extensions: ['*', '.js', '.json'],
         alias: {
             bg: path.resolve(__dirname, 'src/img/bg.jpg'),
-            jquery: path.resolve(__dirname, 'src/lib/jquery/jquery-1.12.4.min.js'),
+            // jquery: path.resolve(__dirname, 'src/lib/jquery/jquery-1.12.4.min.js'),
             layer: path.resolve(__dirname, 'src/lib/layer/app.js')
         }
     }
