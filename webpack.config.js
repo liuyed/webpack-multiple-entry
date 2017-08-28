@@ -183,7 +183,7 @@ module.exports = {
         extensions: ['*', '.js', '.json'],
         alias: {
             bg: path.resolve(__dirname, 'src/img/bg.jpg'),
-            // jquery: path.resolve(__dirname, 'src/lib/jquery/jquery-1.12.4.min.js'),
+            jquery: path.resolve(__dirname, 'src/lib/jquery/jquery-1.12.4.min.js'),
             layer: path.resolve(__dirname, 'src/lib/layer/app.js')
         }
     }
